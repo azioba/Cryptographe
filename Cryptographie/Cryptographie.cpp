@@ -1,10 +1,20 @@
 // Cryptographie.cpp : Defines the entry point for the console application.
-//
+
 
 #include "stdafx.h"
-/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////
+//                                                                         //
+//Algo de cryptographie simple par decallage, implementé par Abdoul Aziz Ba//
+//																		   //
+////////////////////////////////////////////////////////////////////////////
+
+
 #include <iostream>
 #include <string>
+#include <algorithm>
+#include <iterator>
+#include <cctype>
+
 using namespace std;
 
 // Foncteur qui effectue un chiffrement par decalage
