@@ -2,11 +2,7 @@
 
 
 #include "stdafx.h"
-/////////////////////////////////////////////////////////////////////////////
-//                                                                         //
-//Algo de cryptographie simple par decallage, implementé par Abdoul Aziz Ba//
-//																		   //
-////////////////////////////////////////////////////////////////////////////
+
 
 
 #include <iostream>
@@ -23,13 +19,33 @@ class ChiffrementDecal {
 public:
 
 	// Constructeur prenant le decalage voulu en argument
-	ChiffrementDecal(int decalage)
+	ChiffrementDecal(int decalage) : m_decalage(decalage)
 	{
 		// A vous de jouer...
 	}
 
+	// Surcharge de l'opérateur ()
+	string operator()(string texte)
+	{
+		string result;
 
-	// A vous de jouer...
+		//itérateur qui parcours le texte et applique le decallage souhaité
+		for (char lettre : texte)
+		{
+			if (isupper(lettre))
+			{
+				result += (lettre + m_decalage - 'A') % 26 + 'A';
+				result += ", ";
+			}
+			else
+			{
+				result += lettre;
+				result += ", ";
+			}
+		}
+		
+		return result;
+	}
 
 private:
 
@@ -52,10 +68,13 @@ int main()
 	// Creation du foncteur
 	ChiffrementDecal foncteur(decalage);
 
-	// Chaine de caracteres pour le message crypter
-	string texte_crypte;
+	
+	// Sauvegarde du texte dans un string
+	string texte_crypte = foncteur(texte);
+	
+	//affichage du resultat
+	cout << texte_crypte << endl;
 
-	// A vous de jouer.... 
 
 	return 0;
 }
